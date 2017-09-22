@@ -1,13 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">My Computer</string>
     <string name="tv_computer_name">Computer Name</string>
     <string name="btn_details">Details</string>
-    <string name="tv_name">Name:</string>
-    <string name="tv_memory">Memory:</string>
-    <string name="tv_laptop">Laptop:</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_edit">Edit</string>
     <string name="btn_ok">Ok</string>
-    <string name="rb_yes">Yes</string>
     <string name="rb_no">No</string>
+    <string name="rb_yes">Yes</string>
+    <string name="tv_laptop">Laptop:</string>
+    <string name="tv_memory">Memory:</string>
+    <string name="tv_name">Name:</string>
 </resources>

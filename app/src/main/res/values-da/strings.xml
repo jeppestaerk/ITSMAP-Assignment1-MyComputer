@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Min Computer</string>
+    <string name="tv_computer_name">Computer Navn</string>
+    <string name="btn_details">Detaljer</string>
+    <string name="btn_cancel">Annuller</string>
+    <string name="btn_edit">Rediger</string>
+    <string name="btn_ok">Ok</string>
+    <string name="rb_no">Nej</string>
+    <string name="rb_yes">Ja</string>
+    <string name="tv_laptop">Bærbar:</string>
+    <string name="tv_memory">Hukommelse:</string>
+    <string name="tv_name">Navn:</string>
+</resources>

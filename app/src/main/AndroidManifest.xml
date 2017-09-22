@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".A2" />
+        <activity android:name=".A3"></activity>
     </application>
 
 </manifest>
