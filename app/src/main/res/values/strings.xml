@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">My Computer</string>
-    <string name="tv_computer_name">Computer Name</string>
     <string name="btn_details">Details</string>
     <string name="tv_name">Name:</string>
     <string name="tv_memory">Memory:</string>
@@ -10,4 +9,8 @@
     <string name="btn_ok">Ok</string>
     <string name="rb_yes">Yes</string>
     <string name="rb_no">No</string>
+    <string name="ph_name">My Computer</string>
+    <string name="ph_memory">0</string>
+    <string name="ph_laptop">true</string>
+    <string name="tv_gigabite">GB</string>
 </resources>
