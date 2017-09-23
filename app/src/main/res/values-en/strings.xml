@@ -4,7 +4,7 @@
     <string name="btn_details">Details</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_edit">Edit</string>
-    <string name="btn_ok">Ok</string>
+    <string name="btn_ok">OK</string>
     <string name="rb_no">No</string>
     <string name="rb_yes">Yes</string>
     <string name="tv_laptop">Laptop:</string>
@@ -14,4 +14,6 @@
     <string name="ph_memory">0</string>
     <string name="ph_name">My Computer</string>
     <string name="tv_gigabite">GB</string>
+    <string name="toast_details_updated">Details Updated</string>
+    <string name="toast_details_canceled">Edit Canceled</string>
 </resources>

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_IS_LAPTOP;
 import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_MEMORY;
@@ -19,8 +18,8 @@ public class A3 extends AppCompatActivity {
     int computerMemory;
     Boolean computerIsLaptop;
 
-    EditText etName;
-    EditText etMemory;
+    EditText etComputerName;
+    EditText etComputerMemory;
     RadioButton rbYes;
     RadioButton rbNo;
     Button btnCancel;
@@ -31,16 +30,22 @@ public class A3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a3);
 
-        final Intent data = getIntent();
-        computerName = data.getStringExtra(COMPUTER_NAME);
-        computerMemory = data.getIntExtra(COMPUTER_MEMORY, Integer.valueOf(getString(R.string.ph_memory)));
-        computerIsLaptop = data.getBooleanExtra(COMPUTER_IS_LAPTOP, Boolean.valueOf(getString(R.string.ph_laptop)));
+        if (savedInstanceState != null) {
+            computerName = savedInstanceState.getString(COMPUTER_NAME, getString(R.string.ph_name));
+            computerMemory = savedInstanceState.getInt(COMPUTER_MEMORY, Integer.valueOf(getString(R.string.ph_memory)));
+            computerIsLaptop = savedInstanceState.getBoolean(COMPUTER_IS_LAPTOP, Boolean.valueOf(getString(R.string.ph_laptop)));
+        } else {
+            final Intent data = getIntent();
+            computerName = data.getStringExtra(COMPUTER_NAME);
+            computerMemory = data.getIntExtra(COMPUTER_MEMORY, Integer.valueOf(getString(R.string.ph_memory)));
+            computerIsLaptop = data.getBooleanExtra(COMPUTER_IS_LAPTOP, Boolean.valueOf(getString(R.string.ph_laptop)));
+        }
 
-        etName = (EditText) findViewById(R.id.ptName);
-        etName.setText(computerName);
+        etComputerName = (EditText) findViewById(R.id.ptName);
+        etComputerName.setText(computerName);
 
-        etMemory = (EditText) findViewById(R.id.numMemory);
-        etMemory.setText(String.valueOf(computerMemory));
+        etComputerMemory = (EditText) findViewById(R.id.numMemory);
+        etComputerMemory.setText(String.valueOf(computerMemory));
 
         rbYes = (RadioButton) findViewById(R.id.rbYes);
         rbYes.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +54,7 @@ public class A3 extends AppCompatActivity {
                 computerIsLaptop = true;
             }
         });
+
         rbNo = (RadioButton) findViewById(R.id.rbNo);
         rbNo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +62,7 @@ public class A3 extends AppCompatActivity {
                 computerIsLaptop = false;
             }
         });
+
         if (computerIsLaptop) {
             rbYes.setChecked(true);
         } else {
@@ -75,19 +82,21 @@ public class A3 extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra(COMPUTER_NAME, etName.getText().toString());
-                intent.putExtra(COMPUTER_MEMORY, Integer.valueOf(etMemory.getText().toString()));
-                intent.putExtra(COMPUTER_IS_LAPTOP, computerIsLaptop);
-                setResult(RESULT_OK, intent);
+                Intent data = new Intent();
+                data.putExtra(COMPUTER_NAME, etComputerName.getText().toString());
+                data.putExtra(COMPUTER_MEMORY, Integer.valueOf(etComputerMemory.getText().toString()));
+                data.putExtra(COMPUTER_IS_LAPTOP, computerIsLaptop);
+                setResult(RESULT_OK, data);
                 finish();
             }
         });
-
     }
 
-    private void toastText(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(COMPUTER_NAME, computerName);
+        outState.putInt(COMPUTER_MEMORY, computerMemory);
+        outState.putBoolean(COMPUTER_IS_LAPTOP, computerIsLaptop);
     }
-
 }

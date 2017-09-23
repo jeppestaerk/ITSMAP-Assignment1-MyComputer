@@ -4,7 +4,7 @@
     <string name="btn_details">Detaljer</string>
     <string name="btn_cancel">Annuller</string>
     <string name="btn_edit">Rediger</string>
-    <string name="btn_ok">Ok</string>
+    <string name="btn_ok">OK</string>
     <string name="rb_no">Nej</string>
     <string name="rb_yes">Ja</string>
     <string name="tv_laptop">Bærbar:</string>
@@ -14,4 +14,6 @@
     <string name="ph_memory">0</string>
     <string name="ph_name">Min Computer</string>
     <string name="tv_gigabite">GB</string>
+    <string name="toast_details_updated">Detalijer Opdateret</string>
+    <string name="toast_details_canceled">Redigering Annulleret</string>
 </resources>
