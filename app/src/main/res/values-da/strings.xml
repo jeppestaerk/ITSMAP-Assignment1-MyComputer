@@ -16,4 +16,5 @@
     <string name="tv_gigabite">GB</string>
     <string name="toast_details_updated">Detalijer Opdateret</string>
     <string name="toast_details_canceled">Redigering Annulleret</string>
+    <string name="toast_alert_no_camera">Du skal have et kamera for at kunne benytte denne funktion</string>
 </resources>

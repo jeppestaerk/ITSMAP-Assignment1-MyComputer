@@ -15,4 +15,5 @@
     <string name="tv_gigabite">GB</string>
     <string name="toast_details_updated">Details Updated</string>
     <string name="toast_details_canceled">Edit Canceled</string>
+    <string name="toast_alert_no_camera">You need a camera for this function</string>
 </resources>

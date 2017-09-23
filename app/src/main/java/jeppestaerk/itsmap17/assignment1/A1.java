@@ -57,7 +57,7 @@ public class A1 extends AppCompatActivity {
                 if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                     takePhoto();
                 } else {
-                    toastText("You need a camera for this function"); //TODO translate
+                    toastText(getText(R.string.toast_alert_no_camera).toString());
                 }
             }
         });
