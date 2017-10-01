@@ -22,20 +22,23 @@ import static jeppestaerk.itsmap17.assignment1.Const.REQUEST_IMAGE_CAPTURE;
 
 public class A1 extends AppCompatActivity {
 
-    String computerName;
-    int computerMemory;
-    Boolean computerIsLaptop;
-    Bitmap computerImage;
+    private static final String TAG = "A1";
 
-    TextView tvComputerName;
-    ImageView ivComputerImage;
-    Button btnDetails;
+    private String computerName;
+    private int computerMemory;
+    private Boolean computerIsLaptop;
+    private Bitmap computerImage;
+
+    private TextView tvComputerName;
+    private ImageView ivComputerImage;
+    private Button btnDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a1);
 
+        // Modified from: https://developer.android.com/guide/components/activities/activity-lifecycle.html
         if (savedInstanceState != null) {
             computerName = savedInstanceState.getString(COMPUTER_NAME, getString(R.string.ph_name));
             computerMemory = savedInstanceState.getInt(COMPUTER_MEMORY, Integer.parseInt(getString(R.string.ph_memory)));
@@ -54,7 +57,9 @@ public class A1 extends AppCompatActivity {
         ivComputerImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Check if camera hardware is present
                 if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                    // Modified from: https://developer.android.com/training/camera/photobasics.html
                     takePhoto();
                 } else {
                     toastText(getText(R.string.toast_alert_no_camera).toString());
@@ -74,6 +79,7 @@ public class A1 extends AppCompatActivity {
     }
 
     private void takePhoto() {
+        // Modified from: https://developer.android.com/training/camera/photobasics.html
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
@@ -81,6 +87,7 @@ public class A1 extends AppCompatActivity {
     }
 
     private void startA2() {
+        // Modified from: https://developer.android.com/guide/components/activities/intro-activities.html
         Intent intent = new Intent(this, A2.class);
         intent.putExtra(COMPUTER_NAME, computerName);
         intent.putExtra(COMPUTER_MEMORY, computerMemory);
@@ -91,30 +98,31 @@ public class A1 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            // Modified from: https://developer.android.com/training/camera/photobasics.html
             Bundle extras = data.getExtras();
             computerImage = (Bitmap) extras.get("data");
             ivComputerImage.setImageBitmap(computerImage);
             Log.d("Image", "OK");
         } else if (requestCode == REQUEST_DETAILS_ACTIVITY && resultCode == RESULT_CANCELED) {
-            Log.d("A2", "Canceled");
+            Log.d(TAG, "onActivityResult: REQUEST_DETAILS_ACTIVITY && RESULT_CANCELED");
         } else if (requestCode == REQUEST_DETAILS_ACTIVITY && resultCode == RESULT_OK) {
+            Log.d(TAG, "onActivityResult: REQUEST_DETAILS_ACTIVITY && RESULT_OK");
             computerName = data.getStringExtra(COMPUTER_NAME);
             computerMemory = data.getIntExtra(COMPUTER_MEMORY, Integer.parseInt(getString(R.string.ph_memory)));
             computerIsLaptop = data.getBooleanExtra(COMPUTER_IS_LAPTOP, Boolean.valueOf(getString(R.string.ph_laptop)));
             tvComputerName.setText(computerName);
             toastText(getText(R.string.toast_details_updated).toString());
-            Log.d("A2", "OK");
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
+        // Modified from: https://developer.android.com/guide/components/activities/activity-lifecycle.html
         outState.putString(COMPUTER_NAME, computerName);
         outState.putInt(COMPUTER_MEMORY, computerMemory);
         outState.putBoolean(COMPUTER_IS_LAPTOP, computerIsLaptop);
         outState.putParcelable(COMPUTER_IMAGE, computerImage);
+        super.onSaveInstanceState(outState);
     }
 
     private void toastText(String text) {

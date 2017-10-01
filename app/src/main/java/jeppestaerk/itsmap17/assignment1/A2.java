@@ -106,10 +106,10 @@ public class A2 extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         outState.putString(COMPUTER_NAME, computerName);
         outState.putInt(COMPUTER_MEMORY, computerMemory);
         outState.putBoolean(COMPUTER_IS_LAPTOP, computerIsLaptop);
+        super.onSaveInstanceState(outState);
     }
 
     private void toastText(String text) {
