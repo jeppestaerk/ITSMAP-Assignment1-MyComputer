@@ -20,9 +20,9 @@ import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_NAME;
 import static jeppestaerk.itsmap17.assignment1.Const.REQUEST_DETAILS_ACTIVITY;
 import static jeppestaerk.itsmap17.assignment1.Const.REQUEST_IMAGE_CAPTURE;
 
-public class A1 extends AppCompatActivity {
+public class A1Main extends AppCompatActivity {
 
-    private static final String TAG = "A1";
+    private static final String TAG = "A1Main";
 
     private String computerName;
     private int computerMemory;
@@ -73,7 +73,7 @@ public class A1 extends AppCompatActivity {
         btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startA2();
+                startA2Details();
             }
         });
     }
@@ -86,9 +86,9 @@ public class A1 extends AppCompatActivity {
         }
     }
 
-    private void startA2() {
+    private void startA2Details() {
         // Modified from: https://developer.android.com/guide/components/activities/intro-activities.html
-        Intent intent = new Intent(this, A2.class);
+        Intent intent = new Intent(this, A2Details.class);
         intent.putExtra(COMPUTER_NAME, computerName);
         intent.putExtra(COMPUTER_MEMORY, computerMemory);
         intent.putExtra(COMPUTER_IS_LAPTOP, computerIsLaptop);

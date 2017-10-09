@@ -14,7 +14,7 @@ import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_MEMORY;
 import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_NAME;
 import static jeppestaerk.itsmap17.assignment1.Const.REQUEST_EDIT_ACTIVITY;
 
-public class A2 extends AppCompatActivity {
+public class A2Details extends AppCompatActivity {
 
     String computerName;
     int computerMemory;
@@ -68,14 +68,13 @@ public class A2 extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startA3();
+                startA3Edit();
             }
         });
-
     }
 
-    private void startA3() {
-        Intent intent = new Intent(this, A3.class);
+    private void startA3Edit() {
+        Intent intent = new Intent(this, A3Edit.class);
         intent.putExtra(COMPUTER_NAME, computerName);
         intent.putExtra(COMPUTER_MEMORY, computerMemory);
         intent.putExtra(COMPUTER_IS_LAPTOP, computerIsLaptop);
@@ -88,12 +87,12 @@ public class A2 extends AppCompatActivity {
 
         if (requestCode == REQUEST_EDIT_ACTIVITY && resultCode == RESULT_CANCELED) {
             toastText(getText(R.string.toast_details_canceled).toString());
-            Log.d("A3", "Canceled");
+            Log.d("A3Edit", "Canceled");
         } else if (requestCode == REQUEST_EDIT_ACTIVITY && resultCode == RESULT_OK) {
             computerName = data.getStringExtra(COMPUTER_NAME);
             computerMemory = data.getIntExtra(COMPUTER_MEMORY, Integer.valueOf(getString(R.string.ph_memory)));
             computerIsLaptop = data.getBooleanExtra(COMPUTER_IS_LAPTOP, Boolean.valueOf(getString(R.string.ph_laptop)));
-            Log.d("A3", "OK");
+            Log.d("A3Edit", "OK");
 
             Intent intent = new Intent();
             intent.putExtra(COMPUTER_NAME, computerName);

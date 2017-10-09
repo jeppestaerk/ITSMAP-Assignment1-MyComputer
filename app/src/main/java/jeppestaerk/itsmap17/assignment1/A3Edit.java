@@ -12,7 +12,7 @@ import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_IS_LAPTOP;
 import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_MEMORY;
 import static jeppestaerk.itsmap17.assignment1.Const.COMPUTER_NAME;
 
-public class A3 extends AppCompatActivity {
+public class A3Edit extends AppCompatActivity {
 
     String computerName;
     int computerMemory;
